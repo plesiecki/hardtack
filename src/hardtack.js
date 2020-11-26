@@ -1,7 +1,6 @@
 import { merge } from './utils';
 
-export default {
-  set(name, value) {
+  export function set(name, value) {
     const options = merge(arguments[2]);
 
     const attributes = Object.keys(options)
@@ -23,8 +22,8 @@ export default {
     return (document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(
       value
     )}${attributes}`);
-  },
-  get(name) {
+  };
+  export function get(name) {
     const { cookie } = document;
 
     if (!cookie) {
@@ -42,12 +41,11 @@ export default {
     }, {});
 
     return name ? parsedCookie[name] : parsedCookie;
-  },
-  remove(name) {
+  };
+  export function remove(name) {
     const options = merge(arguments[1], {
       expires: 'Thu, 01 Jan 1970 00:00:01 GMT',
     });
 
-    return this.set(name, '', options);
-  },
-};
+    return set(name, '', options);
+  };
