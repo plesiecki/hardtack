@@ -1,4 +1,4 @@
-import hardtack from '../src/hardtack';
+import * as hardtack from '../src/hardtack';
 
 const user = {
   name: 'Ali',
